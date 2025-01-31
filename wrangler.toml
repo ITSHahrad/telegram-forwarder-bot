@@ -1,0 +1,7 @@
+name = "goorbay-telegram-bot"
+main = "worker.js"
+type = "javascript"
+compatibility_date = "2025-01-31"
+
+[vars]
+TELEGRAM_API_URL = "https://api.telegram.org"

@@ -22,12 +22,12 @@ export default {
 
     if (!body.message) {
       console.log("ℹ️ No message found in update.");
-      return new Response("گوربایی ارسال نشده است ☁🐈", { status: 200 });
+      return new Response("No message recived!", { status: 200 });
     }
 
     if (body.message.text && body.message.text.includes('/start')) {
       console.log('ℹ️ Start command found!');
-      return new Response('لطفا عکس یا ویدیو گوربای خود را ارسال کنید ☁🐈', { status: 200 });
+      return new Response('Please send a photo or video.', { status: 200 });
     }
 
     const message = body.message;
@@ -45,7 +45,7 @@ export default {
       await forwardMedia(TELEGRAM_API_URL, BOT_TOKEN, fileId, TARGET_USER_ID, "video", senderUsername, caption);
     } else {
       console.log("❌ Invalid message type, rejecting.");
-      await sendTextMessage(TELEGRAM_API_URL, BOT_TOKEN, chatId, "لطفا فقط عکس و ویدیو از گوربای خود ارسال کنید ☁🐈");
+      await sendTextMessage(TELEGRAM_API_URL, BOT_TOKEN, chatId, "Only medias ( photos, videos ) are allowed!");
     }
 
     return new Response("OK", { status: 200 });
